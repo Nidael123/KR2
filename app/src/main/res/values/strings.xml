@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KR2</string>
+    <!--links de acceso a la web-->
+    <string name="api_kanji">https://kanjiremaind.000webhostapp.com/Controller/Api/api_kanjis.php</string>
 </resources>
