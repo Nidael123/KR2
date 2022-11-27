@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -28,7 +29,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button start;
+    Button start,login;
     int versiondatabase,updatedata,versionupdate;//con esto hacemos los cambios en las diferentes versiones de laa base
     String urlkanji;
     ContentValues campos;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         urlkanji = getString(R.string.api_kanji);
         versiondatabase = 1;//cambiar cada vwez que la base se modifique
         start = (Button) findViewById(R.id.btn_start);
+        login = (Button) findViewById(R.id.btn_login);
         campos = new ContentValues();
         nuevabase =new ManagerBase(this,"bd_kanji",null,versiondatabase);
         updatedata = buscarversion();
@@ -71,10 +73,14 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Prueba","enviar al a");
             }
         });
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,activity_login.class));
+            }
+        });
 
     }
-
-
     public void cargar_kanji()
     {
 
@@ -114,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
         n_requeriminto = Volley.newRequestQueue(this);
         n_requeriminto.add(jsonObjectRequest);
     }
-
     public int buscarversion()
     {
         int version = 0;
