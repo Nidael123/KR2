@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Prueba","enviar al a");
+                startActivity(new Intent(MainActivity.this,activity_menu.class));
             }
         });
         login.setOnClickListener(new View.OnClickListener() {

@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KR2">
         <activity
+            android:name=".activity_listadok"
+            android:exported="false" />
+        <activity
+            android:name=".activity_vocabulario"
+            android:exported="false" />
+        <activity
+            android:name=".activity_tienda"
+            android:exported="false" />
+        <activity
+            android:name=".activity_jugar"
+            android:exported="false" />
+        <activity
             android:name=".activity_menu"
             android:exported="false"
             android:label="@string/title_activity_menu"

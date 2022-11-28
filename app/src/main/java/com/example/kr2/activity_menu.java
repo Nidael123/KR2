@@ -1,51 +1,51 @@
 package com.example.kr2;
 
-import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.kr2.databinding.ActivityMenuBinding;
+import android.widget.Button;
 
 public class activity_menu extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityMenuBinding binding;
+    //cargar los datos del usaurio aqui o en la pestaña de main
 
+    Button btn_jugar,btn_tienda,btn_vocabulario,btn_listado;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu);
 
-        binding = ActivityMenuBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        btn_jugar = (Button) findViewById(R.id.btn_jugar);
+        btn_listado = (Button) findViewById(R.id.btn_listadok);
+        btn_tienda = (Button) findViewById(R.id.btn_tienda);
+        btn_vocabulario = (Button) findViewById(R.id.btn_vocabulario);
 
-        setSupportActionBar(binding.toolbar);
-
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_activity_menu);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+.             btn_jugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(new Intent(activity_menu.this,activity_jugar.class));
             }
         });
-    }
+        btn_listado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(activity_menu.this,activity_listadok.class));
+            }
+        });
+        btn_tienda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(activity_menu.this,activity_tienda.class));
+            }
+        });
+        btn_vocabulario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(activity_menu.this,activity_vocabulario.class));
+            }
+        });
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_activity_menu);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
     }
 }
