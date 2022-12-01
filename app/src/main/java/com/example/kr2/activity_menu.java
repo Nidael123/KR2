@@ -22,7 +22,7 @@ public class activity_menu extends AppCompatActivity {
         btn_tienda = (Button) findViewById(R.id.btn_tienda);
         btn_vocabulario = (Button) findViewById(R.id.btn_vocabulario);
 
-.             btn_jugar.setOnClickListener(new View.OnClickListener() {
+        btn_jugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(activity_menu.this,activity_jugar.class));

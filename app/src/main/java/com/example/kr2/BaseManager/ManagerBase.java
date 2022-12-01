@@ -39,9 +39,4 @@ public class ManagerBase extends SQLiteOpenHelper {
         }
     }
 
-    public void prueba(SQLiteDatabase database)
-    {
-        database.execSQL("");
-    }
-
 }
