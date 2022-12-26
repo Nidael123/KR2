@@ -3,8 +3,10 @@ package com.example.kr2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     RequestQueue n_requeriminto;
     SQLiteDatabase bd;
     ManagerBase nuevabase;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
         campos = new ContentValues();
         nuevabase =new ManagerBase(this,"bd_kanji",null,versiondatabase);
         updatedata = buscarversion();
+        preferences = getSharedPreferences("Informacionusuario",MODE_PRIVATE);
+        editor=preferences.edit();
+        editor.putInt("Monedas",5);
+        editor.putInt("MonedasFisicas",2);
+        editor.commit();
 
         if(versionupdate > updatedata)
         {

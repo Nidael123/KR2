@@ -36,7 +36,7 @@
             android:text="TIENDA" />
 
         <TextView
-            android:id="@+id/txte_monedas"
+            android:id="@+id/txt_monedas"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:text="TextView" />

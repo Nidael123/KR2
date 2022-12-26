@@ -8,7 +8,11 @@ import androidx.annotation.Nullable;
 
 public class ManagerBase extends SQLiteOpenHelper {
     //vocabulario hacer cuando cargue la pantlla de vocabulario
-    String t_kanji = "create table kanji(id_kanji int ,kanji varchar(25),nivel int default 0,sig_ingle varchar(100),sig_español varchar(100),id_tipo int)";
+    //estado por default todos van a estar bloqueados "B" se desbloquean los 10 primeros "D"
+    //Nivel 5  1 2 3 4 5 una vez en nivel 5 el kanji esta aprendido
+    //exp la cantidad de veces que ha acertado para subir de nivel, 10 50 150 300 500 una vez en 5 nivel cambia de "D" a "T" terminados
+    /*añadir la tabla para los tipos de kanji*/
+    String t_kanji = "create table kanji(id_kanji int ,kanji varchar(25),nivel int default 0,sig_ingle varchar(100),sig_español varchar(100),id_tipo int,estado varchar(2))";
     String t_versionbase = "create table version(id_version int)";
     String t_kanjiestado = "create table  kanjiestado(id_kanji int,estado bool default 0)";
     int updatedatabase;//verifico que version de los datos hay en la base de datos

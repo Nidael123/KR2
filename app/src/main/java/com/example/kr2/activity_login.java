@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +26,7 @@ import java.util.Map;
 
 public class activity_login extends AppCompatActivity {
 
-    Button btn_guardar;
+    Button btn_guardar,btn_volver;
     EditText txt_nombre,txt_apellido,txt_nick,txt_clave,txt_correo;
     String api_user;
     RequestQueue n_requerimiento;
@@ -39,6 +40,7 @@ public class activity_login extends AppCompatActivity {
         n_requerimiento = Volley.newRequestQueue(this);
         api_user = getString(R.string.api_users);
         btn_guardar = (Button) findViewById(R.id.btn_actualizar);
+        btn_volver = (Button) findViewById(R.id.btn_volver);
         txt_nombre = (EditText) findViewById(R.id.text_nombre);
         txt_apellido = (EditText)findViewById(R.id.text_apellido);
         txt_nick = (EditText) findViewById(R.id.text_nick);
@@ -50,6 +52,12 @@ public class activity_login extends AppCompatActivity {
             public void onClick(View view) {
                 //validar si esta vacio
                 guardarusuario();
+            }
+        });
+        btn_volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

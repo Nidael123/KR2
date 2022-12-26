@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KR2">
         <activity
+            android:name=".Pruebas"
+            android:exported="false" />
+        <activity
+            android:name=".activity_practicar"
+            android:exported="false" />
+        <activity
+            android:name=".MenuJugar"
+            android:exported="false" />
+        <activity
             android:name=".activity_listadok"
             android:exported="false" />
         <activity

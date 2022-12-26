@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.security.keystore.KeyNotYetValidException;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,36 +16,30 @@ import com.example.kr2.Clases.Kanji;
 
 import java.util.ArrayList;
 
-public class activity_jugar extends AppCompatActivity {
+public class activity_practicar extends AppCompatActivity {
 
-    Button btn_next,btn_preview,btn_return;
-    TextView txt_kanji,txt_sigingles,txt_sigespano;
+    Button btn_siguiete,btn_anterior,btn_regresar;
+    TextView txt_kanji_pra;
     SQLiteDatabase bd;
     ManagerBase nuevabase;
     ArrayList<Kanji> list_kanjis;
     int place;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jugar);
+        setContentView(R.layout.activity_practicar);
 
+        place = 0;
+        list_kanjis = new ArrayList<>();
         nuevabase = new ManagerBase(this,"bd_kanji",null,1);
-        place  = 0;
-        list_kanjis = new ArrayList<Kanji>();
+        btn_siguiete = (Button) findViewById(R.id.btn_practica_sig);
+        btn_anterior = (Button) findViewById(R.id.btn_practica_anterior);
+        btn_regresar = (Button) findViewById(R.id.btn_practica_regresar);
+        txt_kanji_pra = (TextView) findViewById(R.id.txt_kanji_pr);
         cargarkanji_base();
-        btn_next =(Button) findViewById(R.id.btn_prueba_3);
-        btn_preview = (Button) findViewById(R.id.btn_prueba_1);
-        btn_return = (Button) findViewById(R.id.btn_prueba_2);
-        txt_kanji = (TextView) findViewById(R.id.txt_kanji_prueba);
-        txt_sigingles = (TextView)findViewById(R.id.txt_sigingles);
-        txt_sigespano = (TextView)findViewById(R.id.txt_sigespanol);
-        txt_kanji.setText(list_kanjis.get(place).getKanji());
 
-
-
-
-
-        btn_preview.setOnClickListener(new View.OnClickListener() {
+        btn_anterior.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -52,25 +47,21 @@ public class activity_jugar extends AppCompatActivity {
                 {
                     place = list_kanjis.size() - 1;
                 }else place--;
-                txt_kanji.setText(list_kanjis.get(place).getKanji());
-                txt_sigingles.setText(list_kanjis.get(place).getSig_ingle());
-                txt_sigespano.setText(list_kanjis.get(place).getSig_español());
+                txt_kanji_pra.setText(list_kanjis.get(place).getKanji());
             }
         });
-        btn_next.setOnClickListener(new View.OnClickListener() {
+        btn_siguiete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(place == list_kanjis.size() - 1)
                 {
                     place = 0;
                 }else place++;
-                txt_kanji.setText(list_kanjis.get(place).getKanji());
-                txt_sigingles.setText(list_kanjis.get(place).getSig_ingle());
-                txt_sigespano.setText(list_kanjis.get(place).getSig_español());
+                txt_kanji_pra.setText(list_kanjis.get(place).getKanji());
 
             }
         });
-        btn_return.setOnClickListener(new View.OnClickListener() {
+        btn_regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -85,7 +76,7 @@ public class activity_jugar extends AppCompatActivity {
         prueba = new Kanji();
         bd = nuevabase.getReadableDatabase();
         try {
-            Cursor cursor = bd.rawQuery("select kanji,sig_ingle,sig_español,nivel from kanji",null);
+            Cursor cursor = bd.rawQuery("select kanji,sig_ingle,sig_español from kanji",null);
             if(cursor.move(i))
             {
                 do
