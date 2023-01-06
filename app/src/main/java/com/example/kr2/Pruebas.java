@@ -6,7 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.kr2.BaseManager.ManagerBase;
@@ -14,7 +16,7 @@ import com.example.kr2.Clases.Kanji;
 
 import java.util.ArrayList;
 
-public class Pruebas extends AppCompatActivity {
+public class Pruebas extends AppCompatActivity{
 
     Button btn_1,btn_2,btn_3;
     TextView txt_kanji;
@@ -42,6 +44,13 @@ public class Pruebas extends AppCompatActivity {
         btn_1.setText(list_kanjis.get(numeroKanji).getSig_español());
         btn_2.setText(list_kanjis.get((int) (Math.random() * list_kanjis.size()-1)).getSig_español());
         btn_3.setText(list_kanjis.get((int) (Math.random() * list_kanjis.size()-1)).getSig_español());
+
+        btn_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     public void cargarkanji_base()
