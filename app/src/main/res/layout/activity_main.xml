@@ -5,12 +5,63 @@
     android:id="@+id/Constrain_layaut"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="549dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="331dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/btn_login" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="245dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="254dp"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="34dp"
+                android:layout_height="111dp" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="353dp"
+                android:layout_height="105dp"
+                android:layout_weight="1"
+                android:scaleType="center"
+                app:srcCompat="@drawable/btn_start" />
+
+            <Space
+                android:layout_width="117dp"
+                android:layout_height="111dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_start"
@@ -25,5 +76,6 @@
             android:layout_width="match_parent"
             android:layout_height="74dp"
             android:text="Login" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
