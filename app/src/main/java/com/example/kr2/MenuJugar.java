@@ -18,7 +18,7 @@ public class MenuJugar extends AppCompatActivity {
 
         btn_jugar = (Button) findViewById(R.id.btn_jugar1);
         btn_practicar = (Button) findViewById(R.id.btn_practicar_mj);
-        btn_jugar = (Button) findViewById(R.id.btn_mj_pruebas);
+        btn_prueba = (Button) findViewById(R.id.btn_mj_pruebas);
 
         btn_jugar.setOnClickListener(new View.OnClickListener() {
             @Override
